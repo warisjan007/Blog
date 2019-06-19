@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="home" %}
+{% endblock %}
+
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+<a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Giriş Yap</a>
+<a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Kayıt OL</a>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block splash %}
+  <div class="jumbotron jumbotron-carousel corporate-jumbo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-8">
+          <h1>{% include "_brandname.html" %}</h1>
+          <p>Bu bir python ödevidir sadece deneme amaçlı kullanabilirsiniz .</p>
+	  <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Ücretsiz Kayıt Ol</a>
+        </div>
+        <div class="col-md-4 col-sm-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock splash %}
+
+{% block container %}
+<!-- Benefits of the Django application -->
+<a id="about"></a>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>Ben Kimim </h2>
+      <p>Ben Uludağ Üniversitesi son sınıf öğrencisi WARISIJIANG TUOHUTI Bu benim python ödevimdir </p>
+      <p><a class="btn btn-primary" href="#" role="button">İncele &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2>Neler Biliyorum </h2>
+      <p> Python django php c# c++ vb.net MySql html css photoshop gibi bir çok dilleri öğrendim </p>
+      <p><a class="btn btn-primary" href="#" role="button">İncele &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2>Amaç</h2>
+      <p> Web alanında kendimi daha çok geliştirmek ve iyi bir kariyer yepmayı hedefliyorum .</p>
+      <p><a class="btn btn-primary" href="#" role="button">İncele &raquo;</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock container %}
+
+{% block scripts %}
+<script src="{% static 'site/js/site.js' %}"></script>
+{% endblock scripts %}
+

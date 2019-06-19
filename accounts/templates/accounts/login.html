@@ -1,0 +1,18 @@
+{% extends "accounts/auth_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Giriş Yap{% endblock %}
+
+{% block form_heading %}Lütfen Giriş Yapın {% endblock %}
+
+{% block form %}
+  {% crispy form %}
+
+  <div class="form-message">
+    <p>
+      Hesabınız Yok ise ? <a href="{% url 'accounts:signup' %}">Kayıt Olun</a>.
+    </p>
+  </div>
+{% endblock form %}
+
